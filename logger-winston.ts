@@ -1,5 +1,5 @@
 import * as winston from 'winston'; // Import the main winston library
-const { combine, timestamp, errors, json, prettyPrint } = winston.format; // Destructure formatting functions from winston.format
+const { combine, timestamp, errors, json, prettyPrint,metadata} = winston.format; // Destructure formatting functions from winston.format
 import winstonDailyRotateFile from 'winston-daily-rotate-file'; // Import the daily rotate file transport plugin
 import 'winston-mongodb'; // Import the MongoDB transport plugin
 
@@ -30,15 +30,16 @@ const logger = winston.createLogger({
   format: combine( // Combine multiple formatting functions
     errors({ stack: true }), // Include error stack traces
     timestamp(), // Add a timestamp to each log entry
-    json(), // Format logs as JSON
+    metadata({ fillExcept: ['message', 'level', 'timestamp'] }), // Add metadata except specified fields
+    json(),
     prettyPrint() // Pretty print the JSON logs
-  ), // End of combined formats
+  ),  
   transports: [
     new winston.transports.Console(), // Console transport
     new winston.transports.File({ filename: 'error.log', level: 'error' }), // File transport for error logs
     new winston.transports.MongoDB(options), // MongoDB transport with specified options
     fileRotateTransport // Daily rotate file transport
-  ] // Array of transports
-}); // Create the logger with the specified configuration
+  ] 
+}); 
 
 export default logger; // Export the logger for use in other parts of the application
