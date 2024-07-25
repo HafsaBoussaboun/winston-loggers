@@ -12,9 +12,7 @@ This file contains the configuration for Winston logging, including daily rotati
 This file demonstrates how to use the configured logger.
 
 ## Setup
-1. Make sure to install the required npm packages:
-
-run `npm install`
+1. Make sure to install the required npm packages: run `npm install`
 
 2. Configure MongoDB : Ensure that MongoDB is running and accessible at the specified connection string (mongodb://localhost:27017/winston).
 
