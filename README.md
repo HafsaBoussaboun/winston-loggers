@@ -5,11 +5,9 @@ This project sets up a centralized logging system using Winston with daily log f
 
 ## Files
 
-#### logger.ts
-This file contains the configuration for Winston logging, including daily rotation and MongoDB transport.
+#### logger.ts : This file contains the configuration for Winston logging, including daily rotation and MongoDB transport.
 
-#### index.ts
-This file demonstrates how to use the configured logger.
+#### index.ts : This file demonstrates how to use the configured logger.
 
 ## Setup
 1. Make sure to install the required npm packages: run `npm install`
